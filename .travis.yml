@@ -9,4 +9,4 @@ install:
   - pip3 install pefile 
 
 script:
-  - cd volatility3 && vol.py -f win10.aff4 windows.pslist
+  - cd /tmp/vol3 && python3 vol.py -f win10.aff4 windows.pslist
