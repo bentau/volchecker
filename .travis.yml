@@ -2,8 +2,8 @@ language: python
 python: "3.5"
 
 before_install:
-  - git clone https://github.com/volatilityfoundation/volatility3.git
-  - cd volatility3 && curl -O https://storage.googleapis.com/images.rekall-forensic.com/test_suite/win10/win10.aff4
+  - git clone https://github.com/volatilityfoundation/volatility3.git /tmp/vol3
+  - cd /tmp/vol3 && curl -O https://storage.googleapis.com/images.rekall-forensic.com/test_suite/win10/win10.aff4
 
 install:
   - pip3 install pefile 
