@@ -12,6 +12,8 @@ install:
   - pip3 install pefile 
 
 script:
-  - cd /tmp/volatility && python2.7 vol.py imagecopy -f ../vol3/win10.aff4 -O ../vol3/win10.raw 
+  - cd /tmp/volatility && python2.7 vol.py imagecopy -f ../vol3/win10.aff4 -O ../vol3/win10.raw
+  - cd /tmp/volatility && python vol.py -f ../vol3/win10.raw --profile Win10x64 kdbgscan
+  - PYTHONPATH="." python3 volatility/framework/symbols/windows/pdbconv.py -g 2F35AA77F3484FE59775E55B7FF1EDE61  -p ntkrnlmp.pdb -o volatility/symbols/windows/ntkrnlmp.pdb/2F35AA77F3484FE59775E55B7FF1EDE61-2.json 
   - cd /tmp/vol3 && python3 vol.py -vvv -f win10.raw windows.pslist
   - cd /tmp/vol3 && python3 vol.py -vvv -f win10.raw windows.info
