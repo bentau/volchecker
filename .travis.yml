@@ -5,10 +5,13 @@ before_install:
   - git clone https://github.com/volatilityfoundation/volatility3.git /tmp/vol3
   - cd /tmp/vol3 && curl -O https://storage.googleapis.com/images.rekall-forensic.com/test_suite/win10/win10.aff4
   - cd /tmp/vol3/volatility/symbols && wget https://downloads.volatilityfoundation.org/volatility3/symbols/windows.zip && unzip windows.zip
-
+  - git clone https://github.com/google/rekall.git /tmp/rekall 
+  - git clone https://github.com/volatilityfoundation/volatility.git /tmp/volatility
+  
 install:
   - pip3 install pefile 
 
 script:
-  - cd /tmp/vol3 && python3 vol.py -vvv -f win10.aff4 windows.pslist
-  - cd /tmp/vol3 && python3 vol.py -vvv -f win10.aff4 windows.info
+  - ce /tmp/volatility && python vol.py imagecopy -f ../vol3/win10.aff4 -O ../vol3/win10.raw 
+  - cd /tmp/vol3 && python3 vol.py -vvv -f win10.raw windows.pslist
+  - cd /tmp/vol3 && python3 vol.py -vvv -f win10.raw windows.info
