@@ -4,15 +4,14 @@ python: "3.5"
 before_install:
   - git clone https://github.com/volatilityfoundation/volatility3.git /tmp/vol3
   - cd /tmp/vol3 && curl -O https://storage.googleapis.com/images.rekall-forensic.com/test_suite/win10/win10.aff4
-  - cd /tmp/vol3/volatility/symbols && wget https://downloads.volatilityfoundation.org/volatility3/symbols/windows.zip && unzip windows.zip
-  - git clone https://github.com/google/rekall.git /tmp/rekall 
+  - cd /tmp/vol3/volatility/symbols && wget https://downloads.volatilityfoundation.org/volatility3/symbols/windows.zip && unzip windows.zip > /dev/null
   - git clone https://github.com/volatilityfoundation/volatility.git /tmp/volatility
   
 install:
   - pip3 install pefile 
 
 script:
-  - cd /tmp/volatility && python2.7 vol.py imagecopy -f ../vol3/win10.aff4 -O ../vol3/win10.raw
+  - cd /tmp/volatility && python2.7 vol.py imagecopy -f ../vol3/win10.aff4 -O ../vol3/win10.raw > /dev/null
   - cd /tmp/volatility && python2.7 vol.py -f ../vol3/win10.raw --profile Win10x64 kdbgscan
   - cd /tmp/vol3 && PYTHONPATH="." python3 volatility/framework/symbols/windows/pdbconv.py -g 2F35AA77F3484FE59775E55B7FF1EDE61  -p ntkrnlmp.pdb -o volatility/symbols/windows/ntkrnlmp.pdb/2F35AA77F3484FE59775E55B7FF1EDE61-2.json 
   - cd /tmp/vol3 && python3 vol.py -vvv -f win10.raw windows.pslist
