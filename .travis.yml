@@ -6,7 +6,7 @@ before_install:
   - echo "Sum should be 34c42d4c35cd7df1a94ecb6bdd568a90"
   - md5sum /tmp/win10.raw
   - pip3 install pefile 
-  - pip2 install distorm3
+    #  - pip2 install distorm3
   
   
 install:
