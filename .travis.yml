@@ -7,7 +7,7 @@ before_install:
   - md5sum /tmp/win10.raw
   - pip3 install pefile 
     #  - pip2 install distorm3
-  - pip2 --user install pycrypto
+  - pip2 install --user pycrypto distorm3
   
   
 install:
