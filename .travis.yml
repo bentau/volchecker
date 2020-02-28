@@ -16,8 +16,7 @@ install:
   - cd /tmp/vol3/volatility/symbols && wget https://downloads.volatilityfoundation.org/volatility3/symbols/windows.zip && unzip windows.zip > /dev/null
 
 script:
-  - cd /tmp/volatility && python2.7 vol.py --output=json --output-file=pslist.json -f /tmp/win10.raw --profile Win10x64 pslist
-  - cd /tmp/volatility && cat pslist.json
+  - cd /tmp/volatility && python2.7 vol.py -f /tmp/win10.raw --profile Win10x64 pslist
   - cd /tmp/volatility && python2.7 vol.py -f /tmp/win10.raw --profile Win10x64 kdbgscan
     #  - cd /tmp/vol3 && PYTHONPATH="." python3 volatility/framework/symbols/windows/pdbconv.py -g 2F35AA77F3484FE59775E55B7FF1EDE61  -p ntkrnlmp.pdb -o volatility/symbols/windows/ntkrnlmp.pdb/2F35AA77F3484FE59775E55B7FF1EDE61-2.json > /dev/null 
   - cd /tmp/vol3 && python3 vol.py -vvv -f /tmp/win10.raw windows.pslist
