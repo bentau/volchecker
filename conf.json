@@ -1,1 +1,1 @@
-{ 'primary.class': 'volatility.framework.layers.intel.WindowsIntel32e', 'primary.page_map_offset': 1744896 }
+{ "primary.class": "volatility.framework.layers.intel.WindowsIntel32e", "primary.page_map_offset": 1744896 }
