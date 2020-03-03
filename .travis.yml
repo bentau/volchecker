@@ -16,7 +16,7 @@ install:
   - cd /tmp/vol3/volatility/symbols && wget https://downloads.volatilityfoundation.org/volatility3/symbols/windows.zip && unzip windows.zip > /dev/null
 
 script:
-  - cd /tmp/vol3 && curl -O https://raw.githubusercontent.com/bentau/volchecker/master/conf.json
+  - cd /tmp/vol3 && curl -O https://raw.githubusercontent.com/bentau/volchecker/93e9176f7a6d5e7f061c4011ecda54b13a3867d2/conf.json
   - cd /tmp/vol3 && python3 /tmp/vol3/vol.py -vvv --config conf.json -f /tmp/win10.raw windows.pslist
   - cd /tmp/vol3 && python3 /tmp/vol3/vol.py -vvv --config conf.json -f /tmp/win10.raw windows.info
   - cd /tmp/vol3 && python3 /tmp/vol3/vol.py -vvv --config conf.json -f /tmp/win10.raw windows.verinfo.VerInfo
